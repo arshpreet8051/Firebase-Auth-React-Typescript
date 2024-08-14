@@ -1,33 +1,81 @@
 .signup-card-conatiner{
-    height: 250px;
-    width: 200px;
-    border: 2px solid;
+    height: 300px;
+    width: 210px;
+    border: 2px solid black;
+    border-radius: 20px;
     margin-top: 150px;
     display: flex;
     align-items: center;
-    justify-content:start;
+    justify-content:center;
+    gap: 8px;
     flex-direction: column;
-    background-color:rgb(212, 244, 255);
+    /* background-color:rgb(70, 46, 107); */
+    box-shadow: rgba(0, 0, 0, 0.5) 8px 8px 9px;
+    /* color: #D0BDB3; */
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: small;
+    transition: box-shadow 0.3s ease;
 }
 
-.button-conatiner{
-    height:20%;
-    width:100%;
+input{
+    /* background-color: #62448d; */
+    /* border: none; */
+    border-radius: 8px;
+    padding: 6px;
+    /* box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px; */
+    outline: none; /* Remove the default blue outline */
+    /* transition: border-color 0.3s ease, box-shadow 0.3s ease; */
+}   
+
+
+/* input:focus { */
+    /* border-color: #4A006E; Change border color when focused */
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); Add a shadow effect */
+    /* background-color: #9986D5; Optional: Change background color on focus */
+/* }  */
+
+.login-button{
+    background-color: #9986D5;
+    border: none;
+    height: 30px;
+    width: 80%;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.loginwithgoogle-button,.signup-button{
+    background-color: #62448d;
+    color: #D0BDB3;
+    border: none;
+    height: 30px;
+    width: 80%;
+    border-radius: 10px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    margin-top: 20px;
-}
-
-.signup-button,.signin-button{
-    border-radius: 5px;
-    border: 1px solid;
-    padding:5px 9px;
-    background-color: cadetblue;
-    color: white;
+    justify-content: center;
+    gap: 5px;
     cursor: pointer;
+    transition: box-shadow 0.3s ease;
+
 }
 
-button:hover{
-    background-color: rgb(63, 123, 125);
+.signup-button:hover,.loginwithgoogle-button:hover{
+    /* background-color: rgb(63, 123, 125); */
+    box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px;
+    background-color: #75569f;
+    color: #f3eae6;
+}
+
+.login-button:hover{
+    box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px;
+    background-color: #ab9ce3;
+}
+
+.google-logo{
+    height: 15px;
+}
+
+.signup-card-conatiner:hover{
+    box-shadow: rgba(0, 0, 0, 0.5) 12px 12px 10px;
 }

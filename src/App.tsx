@@ -1,13 +1,43 @@
-import React from 'react';
+import {useEffect, useState} from 'react';
 import './App.css';
 import SignUp from './components/signup';
+import { getAuth,onAuthStateChanged,signOut } from 'firebase/auth';
+import {app} from "./context/firebase";
+
+const auth = getAuth(app);
 
 function App() {
-  return (
-    <div className="App">
-      <SignUp/>
-    </div>
-  );
+
+  const [user,setUser] = useState<string|null>(null);
+
+  useEffect(
+    ()=>{
+      onAuthStateChanged(auth,user=>{
+        if(user){
+          setUser(user.email);
+        }
+        else{
+          setUser(null)
+        }
+      })
+    },[])
+
+
+    if(user){
+      return(
+        <div>
+          <h1>Hello {user}</h1>
+          <button onClick={()=>{signOut(auth)}}>Log Out</button>
+        </div>
+      )
+    }
+    else{
+      return (
+        <div className="App">
+          <SignUp/>
+        </div>
+      );
+    }
 }
 
 export default App;

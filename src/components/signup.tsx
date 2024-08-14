@@ -16,38 +16,46 @@ const SignUp:React.FC = () =>{
     return(
         <div className="signup-card-conatiner">
 
-            <h3>Sign Up / Sign In</h3>
+            <h3>Log In</h3>
             <div className="email-container">
             <label htmlFor="email">Email </label>
             <input 
+            className="email-input"
             type="email"
             required
-            placeholder="Enter Your Email"
+            
             onChange={(e)=>{SetEmail(e.target.value)}}
             value={email}
             />
+
+            
+
             </div>
             <div className="password-container">
             <label htmlFor="password">Password </label>
             <input 
             type="password"
             required
-            placeholder="Enter Your Password"
             onChange={(e)=>{SetPassword(e.target.value)}}
             value={password}
             />
             </div>
 
-            <div className="button-conatiner">
+            <button className="login-button"
+            onClick={()=>{Firebase?.signinuser(email,password)}}
+            >Log In</button>
+            
+            {/* <p>Or login with</p>
+
+            <button className="loginwithgoogle-button"
+            onClick={()=>{Firebase?.signinwithgoogle()}}> <img src="google.png" alt="Google logo" className="google-logo" /> Log in with Google</button> */}
+
+            <p>Don't have an account ?</p>
+            
             <button 
             className="signup-button"
             onClick={()=>{Firebase?.createUser(email,password);  Firebase?.putData("users",email + password)}}
             >Sign Up</button>
-
-            <button className="signin-button"
-            onClick={()=>{Firebase?.signinuser(email,password)}}
-            >Sign In</button>
-            </div>
         </div>
     )
 };

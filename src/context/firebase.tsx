@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth , createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
+import { getAuth , createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
 import { getDatabase, set, ref } from "firebase/database";
 import { createContext, ReactNode, useContext } from "react";
 
@@ -16,16 +16,18 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
+const googleProvider = new GoogleAuthProvider()
 
 // Context interface
 interface FirebaseContextValue {
   auth: typeof auth;
   putData: (key: string, value: string) => void;
   createUser: (email:string,password:string) => void;
-  signinuser:(email:string,password:string)=>void
+  signinuser:(email:string,password:string)=>void;
+  signinwithgoogle:()=>void;
 }
 
 // Create context
@@ -68,8 +70,12 @@ export const FirebaseProvider = ({ children }: FirebaseProviderProps) => {
     .catch((err)=>{alert("error" + err)})
   }
 
+  const signinwithgoogle = ()=>{
+    signInWithPopup(auth,googleProvider);
+  }
+
   return (
-    <FirebaseContext.Provider value={{ auth, putData, createUser,signinuser }}>
+    <FirebaseContext.Provider value={{ auth, putData, createUser,signinuser,signinwithgoogle }}>
       {children}
     </FirebaseContext.Provider>
   );

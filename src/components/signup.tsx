@@ -45,10 +45,10 @@ const SignUp:React.FC = () =>{
             onClick={()=>{Firebase?.signinuser(email,password)}}
             >Log In</button>
             
-            {/* <p>Or login with</p>
+             <p>Or login with</p>
 
             <button className="loginwithgoogle-button"
-            onClick={()=>{Firebase?.signinwithgoogle()}}> <img src="google.png" alt="Google logo" className="google-logo" /> Log in with Google</button> */}
+            onClick={()=>{Firebase?.signinwithgoogle()}}>  Log in with Google</button> 
 
             <p>Don't have an account ?</p>
             

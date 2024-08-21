@@ -1,6 +1,6 @@
 .signup-card-conatiner{
-    height: 400px;
-    width: 212px;
+    height: 450px;
+    width: 250px;
     border: 2px solid black;
     border-radius: 20px;
     margin-top: 150px;
@@ -9,30 +9,29 @@
     justify-content:center;
     gap: 8px;
     flex-direction: column;
-    /* background-color:rgb(70, 46, 107); */
+    background-color:rgb(70, 46, 107);
     box-shadow: rgba(0, 0, 0, 0.5) 8px 8px 9px;
-    /* color: #D0BDB3; */
+    color: #D0BDB3;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: small;
     transition: box-shadow 0.3s ease;
 }
 
 input{
-    /* background-color: #62448d; */
-    /* border: none; */
+    background-color: #62448d; 
+    border: none; 
     border-radius: 8px;
     padding: 6px;
-    /* box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px; */
+    box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px; 
     outline: none; /* Remove the default blue outline */
-    /* transition: border-color 0.3s ease, box-shadow 0.3s ease; */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
 }   
 
-
-/* input:focus { */
-    /* border-color: #4A006E; Change border color when focused */
-    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); Add a shadow effect */
-    /* background-color: #9986D5; Optional: Change background color on focus */
-/* }  */
+ input:focus { 
+     border-color: #4A006E; 
+     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+     background-color: #9986D5; 
+} 
 
 .login-button{
     background-color: #9986D5;
@@ -61,7 +60,7 @@ input{
 }
 
 .signup-button:hover,.loginwithgoogle-button:hover{
-    /* background-color: rgb(63, 123, 125); */
+    background-color: rgb(63, 123, 125); 
     box-shadow: rgba(0, 0, 0, 0.5) 4px 4px 5px;
     background-color: #75569f;
     color: #f3eae6;

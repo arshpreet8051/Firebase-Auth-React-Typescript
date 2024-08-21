@@ -3,6 +3,8 @@ import './App.css';
 import SignUp from './components/signup';
 import { getAuth,onAuthStateChanged,signOut } from 'firebase/auth';
 import {app} from "./context/firebase";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const auth = getAuth(app);
 
@@ -35,6 +37,7 @@ function App() {
       return (
         <div className="App">
           <SignUp/>
+          <ToastContainer />
         </div>
       );
     }

@@ -18,7 +18,7 @@ const SignUp:React.FC = () =>{
 
             <h3>Log In</h3>
             <div className="email-container">
-            <label htmlFor="email">Email </label>
+            <label htmlFor="email">Email </label><br />
             <input 
             className="email-input"
             type="email"
@@ -28,19 +28,17 @@ const SignUp:React.FC = () =>{
             value={email}
             />
 
-            
-
             </div>
             <div className="password-container">
-            <label htmlFor="password">Password </label>
+            <label htmlFor="password">Password </label><br />
             <input 
             type="password"
             required
             onChange={(e)=>{SetPassword(e.target.value)}}
             value={password}
             />
+                
             </div>
-
             <button className="login-button"
             onClick={()=>{Firebase?.signinuser(email,password)}}
             >Log In</button>
@@ -48,7 +46,7 @@ const SignUp:React.FC = () =>{
              <p>Or login with</p>
 
             <button className="loginwithgoogle-button"
-            onClick={()=>{Firebase?.signinwithgoogle()}}>  Log in with Google</button> 
+            onClick={()=>{Firebase?.signinwithgoogle()}}> <img src="./google.png" alt="" className="google-logo" />  Log in with Google</button> 
 
             <p>Don't have an account ?</p>
             
@@ -56,6 +54,7 @@ const SignUp:React.FC = () =>{
             className="signup-button"
             onClick={()=>{Firebase?.createUser(email,password);  Firebase?.putData("users",email + password)}}
             >Sign Up</button>
+                
         </div>
     )
 };

@@ -2,6 +2,8 @@ import { initializeApp } from "firebase/app";
 import { getAuth , createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
 import { getDatabase, set, ref } from "firebase/database";
 import { createContext, ReactNode, useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -38,6 +40,16 @@ interface FirebaseProviderProps {
   children: ReactNode;
 }
 
+const errorMessages: { [key: string]: string } = {
+  "auth/email-already-in-use": "This email address is already in use.",
+  "auth/invalid-email": "Please enter a valid email address.",
+  "auth/user-not-found": "No account found with this email address.",
+  "auth/wrong-password": "Incorrect password. Please try again.",
+  "auth/weak-password": "Password should be at least 6 characters.",
+  "auth/network-request-failed": "Network error. Please check your connection.",
+  "auth/invalid-credential": "Wrong Email or Password"
+};
+
 export const FirebaseProvider = ({ children }: FirebaseProviderProps) => {
   const putData = (key: string, data: string) => {
     set(ref(database, key), data)
@@ -54,20 +66,22 @@ export const FirebaseProvider = ({ children }: FirebaseProviderProps) => {
     createUserWithEmailAndPassword(auth,email,password)
   .then((userCredential) => {
     console.log("User created successfully:", userCredential.user);
-    alert("Sign Up Success");
+    toast.success("Sign Up Success");
   })
   .catch((error) => {
     // Log error details
     console.error("Error creating user: ", error.code, error.message);
-    alert(`Error creating user: ${error.code} - ${error.message}`);
+    // alert(`Error creating user: ${error.code} - ${error.message}`);
+    const mssg:string= errorMessages[error.code] || "An unexpected error occured";
+    toast.error(mssg);
   });
 
   }
 
   const signinuser = (email:string,password:string) =>{
     signInWithEmailAndPassword(auth,email,password)
-    .then((e)=>{alert("Sign in Success")})
-    .catch((err)=>{alert("error" + err)})
+    .then((e)=>{toast.success("Sign in Success")})
+    .catch((err)=>{toast.error(errorMessages[err.code])})
   }
 
   const signinwithgoogle = ()=>{
